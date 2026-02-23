@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dasaradh Gutta — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage:     #6B7C5E;
+    --sage-light: #8B9E7A;
+    --moss:     #4A5C40;
+    --earth:    #8C6E54;
+    --sand:     #D4B896;
+    --sand-light: #EDD9C0;
+    --cream:    #FAF6F0;
+    --warm-white: #FDF9F4;
+    --paper:    #F5EFE6;
+    --ink:      #2C2416;
+    --ink-2:    #4A3F30;
+    --ink-3:    #7A6B58;
+    --ink-4:    #A89880;
+    --border:   #E0D5C5;
+    --border-2: #C8BAAA;
+    --bark:     #6B4C35;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 56px;
+    background: rgba(250,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    font-size: 12px; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-3);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sage); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding-top: 56px;
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    position: relative; overflow: hidden;
+  }
+  /* Organic background shape */
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background: radial-gradient(ellipse, rgba(107,124,94,0.08) 0%, transparent 70%);
+    animation: morph 12s ease-in-out infinite;
+  }
+  @keyframes morph {
+    0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  }
+  .hero-left {
+    padding: 80px 60px 80px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .hero-overline {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--sage);
+    margin-bottom: 28px;
+  }
+  .hero-overline::before { content: ''; width: 32px; height: 1px; background: var(--sage); }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300; line-height: 1.0;
+    color: var(--ink); margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero-name em { font-style: italic; color: var(--sage); }
+  .hero-desc {
+    font-size: 15px; font-weight: 300; color: var(--ink-2);
+    max-width: 440px; line-height: 1.75; margin-bottom: 40px;
+  }
+  .hero-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+  .hero-link {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--ink-3); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .hero-link:hover { color: var(--sage); }
+  .hl-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--paper); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--sage); color: white;
+    padding: 13px 28px; font-size: 13px; font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    width: fit-content;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--moss); }
+
+  .hero-right {
+    background: var(--paper);
+    padding: 80px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    border-left: 1px solid var(--border);
+    position: relative; z-index: 1;
+  }
+  .profile-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--earth);
+    margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+  }
+  .profile-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .profile-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; line-height: 1.65;
+    color: var(--ink-2); font-style: italic;
+    margin-bottom: 40px;
+  }
+  .profile-quote strong { color: var(--ink); font-style: normal; font-weight: 600; }
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .metric-box {
+    background: var(--cream); padding: 24px 20px;
+    text-align: center;
+  }
+  .metric-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 300; color: var(--sage);
+    line-height: 1;
+  }
+  .metric-l { font-size: 11px; color: var(--ink-4); letter-spacing: 0.06em; margin-top: 6px; }
+
+  /* ── SHARED SECTION STYLES ── */
+  .page-section { padding: 96px 80px; }
+  .section-intro { margin-bottom: 56px; }
+  .section-overline {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--earth);
+    margin-bottom: 12px;
+  }
+  .section-overline::before { content: ''; width: 20px; height: 1px; background: var(--earth); }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 300; color: var(--ink);
+    letter-spacing: -0.01em; line-height: 1.1;
+  }
+  .section-heading em { font-style: italic; color: var(--sage); }
+
+  /* ── EXPERIENCE ── */
+  .exp-section { background: var(--warm-white); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-row {
+    display: grid; grid-template-columns: 200px 1fr;
+    padding: 40px 0; border-bottom: 1px solid var(--border);
+    gap: 48px;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .exp-row.visible { opacity:1; transform:translateY(0); }
+  .exp-side {}
+  .exp-date { font-size: 11px; letter-spacing: 0.08em; color: var(--earth); text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+  .exp-firm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 4px;
+  }
+  .exp-loc { font-size: 12px; color: var(--ink-4); }
+  .exp-main {}
+  .exp-title { font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 16px; }
+  .exp-list-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exp-list-items li {
+    font-size: 14px; font-weight: 300; color: var(--ink-2);
+    line-height: 1.7; padding-left: 22px; position: relative;
+  }
+  .exp-list-items li::before {
+    content: ''; position: absolute; left: 0; top: 9px;
+    width: 8px; height: 1px; background: var(--sage-light);
+  }
+  .exp-list-items li strong { font-weight: 500; color: var(--ink); }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--cream); }
+  .skills-natural {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .sn-card {
+    background: var(--paper); padding: 28px;
+    border: 1px solid var(--border); border-radius: 2px;
+    border-top: 2px solid var(--sage-light);
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .sn-card.visible { opacity:1; transform:translateY(0); }
+  .sn-cat {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--earth); margin-bottom: 12px;
+  }
+  .sn-items { font-size: 13px; font-weight: 300; color: var(--ink-2); line-height: 2; }
+
+  /* ── EDUCATION ── */
+  .edu-section { background: var(--paper); }
+  .edu-natural { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .en-card {
+    padding: 36px;
+    background: var(--cream); border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    opacity: 0; transform: translateX(-16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .en-card.visible { opacity:1; transform:translateX(0); }
+  .en-card::after {
+    content: '';
+    position: absolute; right: -20px; bottom: -20px;
+    width: 80px; height: 80px; border-radius: 50%;
+    border: 2px solid rgba(107,124,94,0.1);
+  }
+  .en-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 6px;
+  }
+  .en-school { font-size: 14px; font-weight: 300; color: var(--ink-3); margin-bottom: 16px; }
+  .en-period {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--earth); text-transform: uppercase;
+  }
+  .en-period::before { content: ''; width: 16px; height: 1px; background: var(--earth); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.35);
+    padding: 40px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; letter-spacing: 0.06em;
+  }
+  footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+  .hero-left > * { animation: fadeUp 0.8s ease both; }
+  .hero-left > *:nth-child(1){animation-delay:0.1s}
+  .hero-left > *:nth-child(2){animation-delay:0.25s}
+  .hero-left > *:nth-child(3){animation-delay:0.4s}
+  .hero-left > *:nth-child(4){animation-delay:0.55s}
+  .hero-left > *:nth-child(5){animation-delay:0.7s}
+  .hero-right > * { animation: fadeUp 0.8s ease both; }
+  .hero-right > *:nth-child(1){animation-delay:0.3s}
+  .hero-right > *:nth-child(2){animation-delay:0.5s}
+  .hero-right > *:nth-child(3){animation-delay:0.7s}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Dasaradh Gutta</span>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="mailto:dasaradh.gutta@gmail.com">Say Hello</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-overline">Software Engineer · Full-Stack · Cloud</div>
+    <h1 class="hero-name">Dasaradh<br><em>Gutta</em></h1>
+    <p class="hero-desc">
+      Building thoughtful, scalable software — from AI-integrated platforms at Walmart to fintech microservices. 4+ years crafting systems that serve millions.
+    </p>
+    <div class="hero-links">
+      <a class="hero-link" href="tel:+19255773961">
+        <div class="hl-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg></div>
+        +1 (925) 577-3961
+      </a>
+      <a class="hero-link" href="mailto:dasaradh.gutta@gmail.com">
+        <div class="hl-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        dasaradh.gutta@gmail.com
+      </a>
+      <a class="hero-link" href="#">
+        <div class="hl-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        Bentonville, Arkansas
+      </a>
+    </div>
+    <a class="cta-btn" href="mailto:dasaradh.gutta@gmail.com">Send a message →</a>
+  </div>
+  <div class="hero-right">
+    <div class="profile-label">About Me</div>
+    <p class="profile-quote">
+      I care about <strong>writing software that matters</strong> — systems built to last, APIs designed for clarity, and products that help real people do their work better.
+    </p>
+    <div class="metric-grid">
+      <div class="metric-box"><div class="metric-n">4+</div><div class="metric-l">Years Building</div></div>
+      <div class="metric-box"><div class="metric-n">40%</div><div class="metric-l">P0/P1 Cut</div></div>
+      <div class="metric-box"><div class="metric-n">30%</div><div class="metric-l">API Speed Gain</div></div>
+      <div class="metric-box"><div class="metric-n">3×</div><div class="metric-l">Scale Achieved</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="page-section exp-section" id="experience">
+  <div class="section-intro">
+    <div class="section-overline">Career</div>
+    <h2 class="section-heading">Where I've<br><em>worked</em></h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-row">
+      <div class="exp-side">
+        <div class="exp-date">Feb 2025 — Present</div>
+        <div class="exp-firm">Walmart Global Tech</div>
+        <div class="exp-loc">Bentonville, AR</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-title">Software Engineer 3</div>
+        <ul class="exp-list-items">
+          <li>Led <strong>Walmart Remote Fulfillment (WRF)</strong> — cross-listing spec support in ISMP enabling simultaneous US & Canada supplier onboarding.</li>
+          <li>Designed hierarchical <strong>override metadata API</strong> with complex DB query logic; integrated with AI chatbot "Specy" using internal LLMs for context-aware spec queries.</li>
+          <li>Built functional API test suites in CI/CD pipelines, reducing <strong>P0/P1 incidents by ~40%</strong> and enabling earlier regression detection.</li>
+          <li>Enhanced Excel generation module with <strong>data validation logic</strong> for seller input error prevention.</li>
+          <li>Integrated alerts monitoring; overhauled log messaging for faster critical issue debugging.</li>
+          <li>Migrated legacy apps <strong>JDK 8 → JDK 21</strong>; holiday on-call support resolving supplier-blocking issues.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-side">
+        <div class="exp-date">Sep 2024 — Jan 2025</div>
+        <div class="exp-firm">Arkoz</div>
+        <div class="exp-loc">USA</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-title">Software Development Engineer</div>
+        <ul class="exp-list-items">
+          <li>Built scalable <strong>Spring Boot microservices</strong> for trading requests, order matching, and transaction settlements.</li>
+          <li>Optimized PostgreSQL + Hibernate ORM through indexing and caching — reducing API response times by <strong>30%</strong>.</li>
+          <li>Deployed React.js dashboards on <strong>AWS EC2 & Lambda</strong> via API Gateway for peak-traffic scalability.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-side">
+        <div class="exp-date">Nov 2021 — Jun 2022</div>
+        <div class="exp-firm">Magna InfoTech</div>
+        <div class="exp-loc">India</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-title">Software Development Engineer</div>
+        <ul class="exp-list-items">
+          <li>Developed financial application with <strong>Spring Boot microservices</strong> and React.js portfolio analytics frontend.</li>
+          <li>Designed RESTful APIs for real-time investment tracking and third-party market data integration.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-side">
+        <div class="exp-date">Sep 2020 — Oct 2021</div>
+        <div class="exp-firm">Wipro Ltd</div>
+        <div class="exp-loc">India</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-title">Software Engineer</div>
+        <ul class="exp-list-items">
+          <li>Migrated complex <strong>.NET legacy app → Java Spring Boot microservices</strong> — 35% faster deployment, 3× concurrent user support.</li>
+          <li>Established <strong>Apache Kafka</strong> event-driven architecture for Wishlist & Gift Card modules.</li>
+          <li>Developed RESTful APIs and collaborated on ReactJS/TypeScript frontend modules.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="page-section skills-section" id="skills">
+  <div class="section-intro">
+    <div class="section-overline">Toolbox</div>
+    <h2 class="section-heading">What I <em>build with</em></h2>
+  </div>
+  <div class="skills-natural">
+    <div class="sn-card"><div class="sn-cat">Languages</div><div class="sn-items">Java · Python · SQL<br>JavaScript · TypeScript</div></div>
+    <div class="sn-card"><div class="sn-cat">Frameworks</div><div class="sn-items">Spring Boot · Spring MVC<br>Spring Security · Hibernate/JPA · React.js</div></div>
+    <div class="sn-card"><div class="sn-cat">Cloud Platforms</div><div class="sn-items">AWS (EC2, Lambda, API Gateway)<br>Azure · GCP</div></div>
+    <div class="sn-card"><div class="sn-cat">DevOps</div><div class="sn-items">Docker · Kubernetes<br>Jenkins · GitLab CI/CD</div></div>
+    <div class="sn-card"><div class="sn-cat">Databases</div><div class="sn-items">PostgreSQL · MySQL · Oracle<br>MongoDB · MS SQL Server</div></div>
+    <div class="sn-card"><div class="sn-cat">Tools & Methods</div><div class="sn-items">Git · Kafka · Maven · Gradle<br>Jira · JUnit · Agile · Microservices</div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="page-section edu-section" id="education">
+  <div class="section-intro">
+    <div class="section-overline">Background</div>
+    <h2 class="section-heading">Where I <em>studied</em></h2>
+  </div>
+  <div class="edu-natural">
+    <div class="en-card">
+      <div class="en-degree">M.S. Computer Software Engineering</div>
+      <div class="en-school">San Jose State University, San Jose, CA</div>
+      <div class="en-period">Aug 2022 – May 2024</div>
+    </div>
+    <div class="en-card">
+      <div class="en-degree">B.Tech Information Technology</div>
+      <div class="en-school">Andhra University, India</div>
+      <div class="en-period">Jul 2016 – Apr 2020</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Dasaradh Gutta</span>
+  <a href="mailto:dasaradh.gutta@gmail.com">dasaradh.gutta@gmail.com</a>
+</footer>
+
+<script>
+const io = new IntersectionObserver(e=>{
+  e.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*130)});
+},{threshold:0.1});
+document.querySelectorAll('.exp-row,.sn-card,.en-card').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
